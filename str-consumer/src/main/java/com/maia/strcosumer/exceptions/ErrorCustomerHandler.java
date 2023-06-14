@@ -16,7 +16,9 @@ public class ErrorCustomerHandler implements KafkaListenerErrorHandler {
     public Object handleError(Message<?> message, ListenerExecutionFailedException e) {
         log.error("EXCEPTION_HANDLER ::: Exception Capturada!");
 
-        log.error("EXCEPTION_HANDLER ::: Exception Capturada!" + e.getMessage());
+        log.error("EXCEPTION_HANDLER ::: Exception Message Error:: {}",e.getMessage());
+        log.error("EXCEPTION_HANDLER ::: payload :: {}",message.getPayload());
+        log.error("EXCEPTION_HANDLER ::: Headers :: {}",message.getHeaders());
 
         return null;
     }
